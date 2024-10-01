@@ -13,15 +13,22 @@ public class FreshMerchandise extends Merchandise {
     }
 
     public String getSpecificData() {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String fecha ="La localización es: " + getLocation() + ". La fecha de caducidad es: "+ dateFormat.format(expirationDate);
+        String fecha ="La localización es: " + getLocation() + ". La fecha de caducidad es: "+ getFormattedDate(getExpirationDate());
         System.out.println(fecha);
         return fecha;
 
     }
 
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
 
+    public String getFormattedDate(Date fecha) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String  fechaFormateada = dateFormat.format(fecha);
+        return fechaFormateada;
+
+    }
 
     public void printSpecificData() {
         System.out.println(getSpecificData());
